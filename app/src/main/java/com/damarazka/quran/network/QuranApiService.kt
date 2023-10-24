@@ -5,5 +5,5 @@ import retrofit2.http.GET
 
 interface QuranApiService {
     @GET ("surah")
-    fun getListSurah() : Call<SurahItem>
+    fun getListSurah() : Call<SurahResponse>
 }

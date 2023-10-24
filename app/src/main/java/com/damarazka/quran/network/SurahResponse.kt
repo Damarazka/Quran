@@ -17,6 +17,7 @@ data class SurahResponse(
 	val status: String? = null
 )
 
+@JsonClass(generateAdapter = true)
 data class SurahItem(
 
 	@Json(name="number")
