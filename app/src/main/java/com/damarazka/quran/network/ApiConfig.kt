@@ -20,5 +20,5 @@ object ApiConfig {
             .build()
         return retrofit.create(T::class.java)
     }
-    val quranApiService = createApiConfig<QuranApiService>("http://api.alquran.cloud/v1/")
+    val quranApiService = createApiConfig<QuranApiService>("https://api.alquran.cloud/v1/")
 }

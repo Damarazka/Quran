@@ -11,14 +11,14 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class QuranViewModel : ViewModel() {
-    private var _listSurah: MutableLiveData<SurahResponse>? = null
+    private var _listSurah = MutableLiveData<SurahResponse>()
     val listSurah get() = _listSurah as LiveData<SurahResponse>
 
     fun getListSurah() {
         ApiConfig.quranApiService.getListSurah().enqueue(object : Callback<SurahResponse> {
             override fun onResponse(call: Call<SurahResponse>, response: Response<SurahResponse>) {
                 if (response.isSuccessful) {
-                    _listSurah?.postValue(response.body())
+                    _listSurah.value = response.body()
                 } else Log.e(
                     "QuranViewModel",
                     "onResponse : Error call with Http status code" + response.code()
