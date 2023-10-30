@@ -10,6 +10,7 @@ import com.damarazka.quran.network.QuranEdition
 class SurahAdapter : RecyclerView.Adapter<SurahAdapter.MyViewHolder>() {
     private val listAyah = ArrayList<AyahsItem>()
     private val quranEdition = ArrayList<QuranEdition>()
+    private var onItemClickCallBack : OnItemClickCallBack?= null
 
     class MyViewHolder(val binding: ItemAyahBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -27,6 +28,9 @@ class SurahAdapter : RecyclerView.Adapter<SurahAdapter.MyViewHolder>() {
             itemNumberAyah.text = dataAyahs.numberInSurah.toString()
             itemAyah.text = dataAyahs.text
             itemTranslation.text = quranIndonesia?.text
+            this.root.setOnClickListener {
+                quranAudio?.let { data -> onItemClickCallBack?.onItemClicked(data) }
+            }
         }
     }
 
@@ -36,5 +40,12 @@ class SurahAdapter : RecyclerView.Adapter<SurahAdapter.MyViewHolder>() {
         listAyah.addAll(dataAyahs)
         quranEdition.clear()
         quranEdition.addAll(dataQuranEdition)
+    }
+
+    fun setOnItemClicked(onItemClickCallBack: OnItemClickCallBack){
+        this.onItemClickCallBack = onItemClickCallBack
+    }
+    interface OnItemClickCallBack{
+        fun onItemClicked(data: AyahsItem)
     }
 }

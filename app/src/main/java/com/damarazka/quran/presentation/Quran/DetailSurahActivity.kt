@@ -2,11 +2,14 @@ package com.damarazka.quran.presentation.Quran
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.damarazka.quran.R
 import com.damarazka.quran.adapter.SurahAdapter
 import com.damarazka.quran.databinding.ActivityDetailSurahBinding
+import com.damarazka.quran.databinding.CustomViewAlertDialogBinding
+import com.damarazka.quran.network.AyahsItem
 import com.damarazka.quran.network.SurahItem
 
 class DetailSurahActivity : AppCompatActivity() {
@@ -24,16 +27,29 @@ class DetailSurahActivity : AppCompatActivity() {
 
         initView()
         val mAdapter = SurahAdapter()
+        mAdapter.setOnItemClicked(object : SurahAdapter.OnItemClickCallBack {
+            override fun onItemClicked(data: AyahsItem) {
+                showAlertDialog()
+            }
+
+        })
 
         val quranViewModel = ViewModelProvider(this)[QuranViewModel::class.java]
         surah.number?.let { quranViewModel.getListAyahBySurah(it) }
-        quranViewModel.listAyah.observe(this){
+        quranViewModel.listAyah.observe(this) {
             mAdapter.setData(it.quranEdition?.get(0)?.ayahs, it.quranEdition)
             binding.rvSurah.apply {
                 adapter = mAdapter
                 layoutManager = LinearLayoutManager(this@DetailSurahActivity)
             }
         }
+    }
+
+    private fun showAlertDialog() {
+        val builder = AlertDialog.Builder(this)
+        val view = CustomViewAlertDialogBinding.inflate(layoutInflater)
+        builder.setView(view.root)
+        builder.show()
     }
 
     private fun initView() {
