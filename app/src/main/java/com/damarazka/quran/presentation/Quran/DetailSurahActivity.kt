@@ -1,7 +1,10 @@
 package com.damarazka.quran.presentation.Quran
 
+import android.media.AudioAttributes
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,6 +14,7 @@ import com.damarazka.quran.databinding.ActivityDetailSurahBinding
 import com.damarazka.quran.databinding.CustomViewAlertDialogBinding
 import com.damarazka.quran.network.AyahsItem
 import com.damarazka.quran.network.SurahItem
+import java.lang.Exception
 
 class DetailSurahActivity : AppCompatActivity() {
     private var _binding: ActivityDetailSurahBinding? = null
@@ -18,6 +22,9 @@ class DetailSurahActivity : AppCompatActivity() {
 
     private var _surah: SurahItem? = null
     private val surah get() = _surah as SurahItem
+
+    private var _mediaPlayer: MediaPlayer? = null
+    private val mediaPlayer get() = _mediaPlayer as MediaPlayer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityDetailSurahBinding.inflate(layoutInflater)
@@ -29,7 +36,7 @@ class DetailSurahActivity : AppCompatActivity() {
         val mAdapter = SurahAdapter()
         mAdapter.setOnItemClicked(object : SurahAdapter.OnItemClickCallBack {
             override fun onItemClicked(data: AyahsItem) {
-                showAlertDialog()
+                showAlertDialog(data)
             }
 
         })
@@ -45,11 +52,44 @@ class DetailSurahActivity : AppCompatActivity() {
         }
     }
 
-    private fun showAlertDialog() {
-        val builder = AlertDialog.Builder(this)
+    private fun showAlertDialog(dataAudio: AyahsItem) {
+        _mediaPlayer = MediaPlayer()
+        val builder = AlertDialog.Builder(this, R.style.CustomAlertDialog).create()
         val view = CustomViewAlertDialogBinding.inflate(layoutInflater)
         builder.setView(view.root)
+        view.apply {
+            tvDialogSurah.text = surah.englishName
+            tvDialogName.text = surah.name
+            val ayahInSurah = dataAudio.numberInSurah
+            val resultAyahText = "Ayah $ayahInSurah"
+            tvDialogAyah.text = resultAyahText
+        }
+        view.btnPlay.setOnClickListener {
+            it.isEnabled = false
+            view.btnPlay.text = getString(R.string.playing_audio)
+            mediaPlayer.setAudioAttributes(
+                AudioAttributes.Builder()
+                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                    .setUsage(AudioAttributes.USAGE_MEDIA)
+                    .build()
+            )
+            try {
+                mediaPlayer.setDataSource(dataAudio.audio)
+                mediaPlayer.prepare()
+                mediaPlayer.start()
+            }catch (e:Exception){
+                e.printStackTrace()
+            }
+        }
+        view.btnCancel.setOnClickListener {
+            mediaPlayer.stop()
+            builder.dismiss()
+        }
+        builder.setCanceledOnTouchOutside(false)
         builder.show()
+        mediaPlayer.setOnCompletionListener{
+            builder.dismiss()
+        }
     }
 
     private fun initView() {
