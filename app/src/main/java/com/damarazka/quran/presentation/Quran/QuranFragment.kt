@@ -1,4 +1,4 @@
-package com.damarazka.quran.presentation
+package com.damarazka.quran.presentation.Quran
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,10 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.damarazka.quran.R
 import com.damarazka.quran.adapter.QuranAdapter
 import com.damarazka.quran.databinding.FragmentQuranBinding
-import com.damarazka.quran.presentation.Quran.QuranViewModel
 
 
 class QuranFragment : Fragment() {

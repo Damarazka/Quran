@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_doa" />
     <fragment
         android:id="@+id/nav_quran"
-        android:name="com.damarazka.quran.presentation.QuranFragment"
+        android:name="com.damarazka.quran.presentation.Quran.QuranFragment"
         android:label="fragment_quran"
         tools:layout="@layout/fragment_quran" />
 </navigation>
