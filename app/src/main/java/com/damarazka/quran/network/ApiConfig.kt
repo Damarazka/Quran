@@ -1,5 +1,6 @@
 package com.damarazka.quran.network
 
+import com.damarazka.quran.network.quran.QuranApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

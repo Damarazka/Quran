@@ -4,15 +4,15 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.damarazka.quran.databinding.FragmentQuranBinding
 import com.damarazka.quran.databinding.ItemSurahBinding
-import com.damarazka.quran.network.SurahItem
+import com.damarazka.quran.domain.model.Surah
+import com.damarazka.quran.network.quran.SurahItem
 import com.damarazka.quran.presentation.Quran.DetailSurahActivity
 
 class QuranAdapter : RecyclerView.Adapter<QuranAdapter.MyViewHolder>() {
-    private val listSurah = ArrayList<SurahItem>()
+    private val listSurah = ArrayList<Surah>()
 
-    fun setData(list: List<SurahItem>?) {
+    fun setData(list: List<Surah>?) {
         if (list == null) return
         listSurah.clear()
         listSurah.addAll(list)

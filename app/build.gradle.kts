@@ -65,4 +65,10 @@ dependencies {
 
 // Moshi
     implementation("com.squareup.moshi:moshi:1.14.0")
+
+    // coroutine
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+// liveData
+    api("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
 }
