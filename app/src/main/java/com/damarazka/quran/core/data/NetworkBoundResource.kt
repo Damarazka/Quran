@@ -1,4 +1,4 @@
-package com.damarazka.quran.data
+package com.damarazka.quran.core.data
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll

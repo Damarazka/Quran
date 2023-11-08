@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.damarazka.quran.adapter.QuranAdapter
-import com.damarazka.quran.data.Resource
+import com.damarazka.quran.core.data.Resource
 import com.damarazka.quran.databinding.FragmentQuranBinding
 import com.damarazka.quran.presentation.ViewModelFactory
 import com.google.android.material.snackbar.Snackbar

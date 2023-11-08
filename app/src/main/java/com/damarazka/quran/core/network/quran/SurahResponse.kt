@@ -1,4 +1,4 @@
-package com.damarazka.quran.network.quran
+package com.damarazka.quran.core.network.quran
 
 import android.os.Parcelable
 import com.squareup.moshi.Json
@@ -8,13 +8,13 @@ import kotlinx.parcelize.Parcelize
 @JsonClass(generateAdapter = true)
 data class SurahResponse(
 
-    @Json(name="code")
+	@Json(name="code")
 	val code: Int? = null,
 
-    @Json(name="data")
+	@Json(name="data")
 	val listSurah: List<SurahItem>,
 
-    @Json(name="status")
+	@Json(name="status")
 	val status: String? = null
 )
 

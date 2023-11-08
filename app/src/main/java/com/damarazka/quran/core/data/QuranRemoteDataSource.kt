@@ -1,9 +1,9 @@
-package com.damarazka.quran.data
+package com.damarazka.quran.core.data
 
 import android.util.Log
-import com.damarazka.quran.network.quran.QuranApiService
-import com.damarazka.quran.network.quran.QuranEditionItem
-import com.damarazka.quran.network.quran.SurahItem
+import com.damarazka.quran.core.network.quran.QuranApiService
+import com.damarazka.quran.core.network.quran.QuranEditionItem
+import com.damarazka.quran.core.network.quran.SurahItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

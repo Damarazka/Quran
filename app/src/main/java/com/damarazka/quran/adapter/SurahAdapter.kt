@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.damarazka.quran.databinding.ItemAyahBinding
-import com.damarazka.quran.domain.model.Ayah
-import com.damarazka.quran.domain.model.QuranEdition
-import com.damarazka.quran.network.quran.AyahsItem
-import com.damarazka.quran.network.quran.QuranEditionItem
+import com.damarazka.quran.core.domain.model.Ayah
+import com.damarazka.quran.core.domain.model.QuranEdition
+import com.damarazka.quran.core.network.quran.AyahsItem
+import com.damarazka.quran.core.network.quran.QuranEditionItem
 
 class SurahAdapter : RecyclerView.Adapter<SurahAdapter.MyViewHolder>() {
     private val listAyah = ArrayList<Ayah>()

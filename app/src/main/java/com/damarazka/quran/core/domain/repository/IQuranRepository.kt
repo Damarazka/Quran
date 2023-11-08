@@ -1,8 +1,8 @@
-package com.damarazka.quran.domain.repository
+package com.damarazka.quran.core.domain.repository
 
-import com.damarazka.quran.data.Resource
-import com.damarazka.quran.domain.model.QuranEdition
-import com.damarazka.quran.domain.model.Surah
+import com.damarazka.quran.core.data.Resource
+import com.damarazka.quran.core.domain.model.QuranEdition
+import com.damarazka.quran.core.domain.model.Surah
 import kotlinx.coroutines.flow.Flow
 
 interface IQuranRepository {

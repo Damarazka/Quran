@@ -1,11 +1,11 @@
 package com.damarazka.quran.util
 
-import com.damarazka.quran.domain.model.Ayah
-import com.damarazka.quran.domain.model.QuranEdition
-import com.damarazka.quran.domain.model.Surah
-import com.damarazka.quran.network.quran.AyahsItem
-import com.damarazka.quran.network.quran.QuranEditionItem
-import com.damarazka.quran.network.quran.SurahItem
+import com.damarazka.quran.core.domain.model.Ayah
+import com.damarazka.quran.core.domain.model.QuranEdition
+import com.damarazka.quran.core.domain.model.Surah
+import com.damarazka.quran.core.network.quran.AyahsItem
+import com.damarazka.quran.core.network.quran.QuranEditionItem
+import com.damarazka.quran.core.network.quran.SurahItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 

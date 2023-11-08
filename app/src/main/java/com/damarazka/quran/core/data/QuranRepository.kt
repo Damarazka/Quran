@@ -1,10 +1,10 @@
-package com.damarazka.quran.data
+package com.damarazka.quran.core.data
 
-import com.damarazka.quran.domain.model.QuranEdition
-import com.damarazka.quran.domain.model.Surah
-import com.damarazka.quran.domain.repository.IQuranRepository
-import com.damarazka.quran.network.quran.QuranEditionItem
-import com.damarazka.quran.network.quran.SurahItem
+import com.damarazka.quran.core.domain.model.QuranEdition
+import com.damarazka.quran.core.domain.model.Surah
+import com.damarazka.quran.core.domain.repository.IQuranRepository
+import com.damarazka.quran.core.network.quran.QuranEditionItem
+import com.damarazka.quran.core.network.quran.SurahItem
 import com.damarazka.quran.util.DataMapper
 import kotlinx.coroutines.flow.Flow
 

@@ -1,4 +1,4 @@
-package com.damarazka.quran.domain.model
+package com.damarazka.quran.core.domain.model
 
 import com.squareup.moshi.Json
 
