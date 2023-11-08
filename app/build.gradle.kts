@@ -57,18 +57,21 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
 
-// Logging Interceptor
+    // Logging Interceptor
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 
-// KSP
+    // KSP
     ksp("com.squareup.moshi:moshi-kotlin-codegen:1.14.0")
 
-// Moshi
+    // Moshi
     implementation("com.squareup.moshi:moshi:1.14.0")
 
     // coroutine
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
-// liveData
+    // liveData
     api("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+
+    // Fused location
+    implementation("com.google.android.gms:play-services-location:21.0.1")
 }
