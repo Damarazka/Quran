@@ -19,7 +19,7 @@ import com.google.android.material.snackbar.Snackbar
 class QuranFragment : Fragment() {
     private var _binding : FragmentQuranBinding? = null
     private val binding get() = _binding as FragmentQuranBinding
-    private val quranViewModel: QuranViewModel by viewModels { ViewModelFactory() }
+    private val quranViewModel: QuranViewModel by viewModels { ViewModelFactory(requireContext()) }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

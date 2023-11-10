@@ -3,11 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.AdzanFragment">
+    tools:context=".presentation.adzan.AdzanFragment">
 
     <TextView
+        android:id="@+id/tv_location"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/adzan" />
+        android:text="@string/adzan"
+        android:textSize="50sp"/>
 
 </FrameLayout>
