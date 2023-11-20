@@ -1,6 +1,4 @@
-package com.damarazka.quran.core.data
-
-import java.util.concurrent.Flow
+package com.damarazka.quran.core.data.network
 
 sealed class NetworkResponse<out T> {
     data class Success<out T>(val data: T) : NetworkResponse<T>()

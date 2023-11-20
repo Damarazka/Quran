@@ -26,18 +26,10 @@ import java.util.Locale
 class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding as ActivityMainBinding
-
-    private var _fusedLocation: FusedLocationProviderClient? = null
-    private val fusedLocation get() = _fusedLocation as FusedLocationProviderClient
-
-    private val sharedViewModel: SharedViewModel by viewModels { ViewModelFactory(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        _fusedLocation = LocationServices.getFusedLocationProviderClient(this)
-        getUserLocation()
 
         val bottomNavView = binding.navBottomView
         val navHostFragment =
@@ -50,24 +42,8 @@ class MainActivity : AppCompatActivity() {
     private fun getUserLocation() {
         if (checkLocationPermission()) {
             if (isLocationOn()) {
-                sharedViewModel.getKnownLastLocation()
-//                fusedLocation.lastLocation.addOnCompleteListener {
-//                    if (it.result != null) {
-//                        val geocoder = Geocoder(this, Locale.getDefault())
-//                        geocoder.getFromLocation(
-//                            it.result.latitude,
-//                            it.result.longitude,
-//                            1
-//                        ) { listAddress ->
-//                            val city = listAddress[0].subAdminArea
-//                            val resultOfCity = city.split(" ")
-//                            Snackbar.make(binding.root, resultOfCity[1], Snackbar.LENGTH_INDEFINITE)
-//                                .show()
-//                        }
-//                    } else {
-//                        Toast.makeText(this, "Sorry something wrong", Toast.LENGTH_SHORT).show()
-//                    }
-//                }
+                 val fusedLocation = LocationServices.getFusedLocationProviderClient(this)
+                fusedLocation.lastLocation
             } else {
                 Toast.makeText(this, "Pleas turn on your location", Toast.LENGTH_SHORT).show()
                 val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)

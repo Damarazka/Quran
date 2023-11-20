@@ -1,5 +1,8 @@
 package com.damarazka.quran.core.data
 
+import com.damarazka.quran.core.data.network.NetworkBoundResource
+import com.damarazka.quran.core.data.network.NetworkResponse
+import com.damarazka.quran.core.data.network.RemoteDataSource
 import com.damarazka.quran.core.domain.model.QuranEdition
 import com.damarazka.quran.core.domain.model.Surah
 import com.damarazka.quran.core.domain.repository.IQuranRepository
@@ -8,7 +11,7 @@ import com.damarazka.quran.core.network.quran.SurahItem
 import com.damarazka.quran.util.DataMapper
 import kotlinx.coroutines.flow.Flow
 
-class QuranRepository(private val remoteDataSource: QuranRemoteDataSource) : IQuranRepository {
+class QuranRepository(private val remoteDataSource: RemoteDataSource) : IQuranRepository {
     override fun getListSurah(): Flow<Resource<List<Surah>>> {
         return object : NetworkBoundResource<List<Surah>, List<SurahItem>>(){
             override fun fetchFromNetwork(data: List<SurahItem>): Flow<List<Surah>> {

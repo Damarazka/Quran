@@ -1,5 +1,6 @@
 package com.damarazka.quran.core.network
 
+import com.damarazka.quran.core.network.adzan.AdzanApiService
 import com.damarazka.quran.core.network.quran.QuranApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -22,4 +23,6 @@ object ApiConfig {
         return retrofit.create(T::class.java)
     }
     val quranApiService = createApiConfig<QuranApiService>("https://api.alquran.cloud/v1/")
+    val adzanApiService = createApiConfig<AdzanApiService>("https://api.myquran.com/v1/")
+
 }

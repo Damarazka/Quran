@@ -1,5 +1,6 @@
-package com.damarazka.quran.core.data
+package com.damarazka.quran.core.data.network
 
+import com.damarazka.quran.core.data.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.first
