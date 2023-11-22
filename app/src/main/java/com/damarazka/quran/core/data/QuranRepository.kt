@@ -6,8 +6,8 @@ import com.damarazka.quran.core.data.network.RemoteDataSource
 import com.damarazka.quran.core.domain.model.QuranEdition
 import com.damarazka.quran.core.domain.model.Surah
 import com.damarazka.quran.core.domain.repository.IQuranRepository
-import com.damarazka.quran.core.network.quran.QuranEditionItem
-import com.damarazka.quran.core.network.quran.SurahItem
+import com.damarazka.quran.core.data.network.quran.QuranEditionItem
+import com.damarazka.quran.core.data.network.quran.SurahItem
 import com.damarazka.quran.util.DataMapper
 import kotlinx.coroutines.flow.Flow
 

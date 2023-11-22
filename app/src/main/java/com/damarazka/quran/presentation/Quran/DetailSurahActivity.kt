@@ -8,8 +8,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.damarazka.quran.R
 import com.damarazka.quran.adapter.SurahAdapter
@@ -18,8 +16,6 @@ import com.damarazka.quran.databinding.ActivityDetailSurahBinding
 import com.damarazka.quran.databinding.CustomViewAlertDialogBinding
 import com.damarazka.quran.core.domain.model.Ayah
 import com.damarazka.quran.core.domain.model.Surah
-import com.damarazka.quran.core.network.quran.AyahsItem
-import com.damarazka.quran.core.network.quran.SurahItem
 import com.damarazka.quran.presentation.ViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import java.lang.Exception

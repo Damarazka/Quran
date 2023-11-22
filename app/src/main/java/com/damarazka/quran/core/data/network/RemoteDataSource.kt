@@ -1,11 +1,11 @@
 package com.damarazka.quran.core.data.network
 
 import android.util.Log
-import com.damarazka.quran.core.network.adzan.AdzanApiService
-import com.damarazka.quran.core.network.adzan.CityItem
-import com.damarazka.quran.core.network.quran.QuranApiService
-import com.damarazka.quran.core.network.quran.QuranEditionItem
-import com.damarazka.quran.core.network.quran.SurahItem
+import com.damarazka.quran.core.data.network.adzan.AdzanApiService
+import com.damarazka.quran.core.data.network.adzan.CityItem
+import com.damarazka.quran.core.data.network.quran.QuranApiService
+import com.damarazka.quran.core.data.network.quran.QuranEditionItem
+import com.damarazka.quran.core.data.network.quran.SurahItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

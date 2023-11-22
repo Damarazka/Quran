@@ -1,7 +1,7 @@
-package com.damarazka.quran.core.network
+package com.damarazka.quran.core.data.network
 
-import com.damarazka.quran.core.network.adzan.AdzanApiService
-import com.damarazka.quran.core.network.quran.QuranApiService
+import com.damarazka.quran.core.data.network.adzan.AdzanApiService
+import com.damarazka.quran.core.data.network.quran.QuranApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

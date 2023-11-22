@@ -12,17 +12,17 @@ import java.util.Locale
 
 class LocationPreferences(val context: Context) {
     private val fusedLocation = LocationServices.getFusedLocationProviderClient(context)
-    private var _lastKnownLocation = MutableLiveData<List<String>>()
-    val lastKnownLocation get() = _lastKnownLocation as LiveData<List<String>>
-
     @SuppressLint("MissingPermission")
-    fun getKnownLastLocation() {
+    fun getKnownLastLocation() : LiveData<List<String>> {
+        val lastKnownLocation = MutableLiveData<List<String>>()
         fusedLocation.lastLocation.addOnSuccessListener {
             if (it != null) {
                 val geocoder = Geocoder(context, Locale.getDefault())
                 geocoder.getFromLocation(
-                    it.latitude,
-                    it.longitude,
+                    -7.8193722,
+                    112.0415361,
+                    //it.,
+                    //it.longitude,
                     1
                 ) { listAddress ->
                     val city = listAddress[0].subAdminArea
@@ -30,9 +30,10 @@ class LocationPreferences(val context: Context) {
                     val subLocality = listAddress[0].subLocality
                     val locality = listAddress[0].locality
                     val resultLocation = "$subLocality, $locality"
+                    Log.i("LocPref", "getKnownLastLocation: $resultOfCity")
 
                     val listCity = listOf(resultOfCity[0], resultLocation)
-                    _lastKnownLocation.postValue(listCity)
+                    lastKnownLocation.postValue(listCity)
                 }
             } else {
                 Toast.makeText(context, "Sorry something wrong", Toast.LENGTH_SHORT).show()
@@ -42,5 +43,6 @@ class LocationPreferences(val context: Context) {
         fusedLocation.lastLocation.addOnFailureListener{
             Log.e("SharedViewModel", "getKnownLastLocation: " + it.localizedMessage )
         }
+        return lastKnownLocation
     }
 }

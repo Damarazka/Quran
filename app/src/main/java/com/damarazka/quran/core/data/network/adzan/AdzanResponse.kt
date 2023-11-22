@@ -1,4 +1,4 @@
-package com.damarazka.quran.core.network.adzan
+package com.damarazka.quran.core.data.network.adzan
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -7,10 +7,10 @@ import com.squareup.moshi.JsonClass
 
 data class CityResponses(
 
-	@Json(name="data")
+    @Json(name="data")
 	val listCity: List<CityItem>,
 
-	@Json(name="status")
+    @Json(name="status")
 	val status: Boolean? = null
 )
 

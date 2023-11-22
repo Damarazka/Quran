@@ -16,7 +16,6 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.damarazka.quran.databinding.ActivityMainBinding
-import com.damarazka.quran.presentation.SharedViewModel
 import com.damarazka.quran.presentation.ViewModelFactory
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -42,10 +41,10 @@ class MainActivity : AppCompatActivity() {
     private fun getUserLocation() {
         if (checkLocationPermission()) {
             if (isLocationOn()) {
-                 val fusedLocation = LocationServices.getFusedLocationProviderClient(this)
+                val fusedLocation = LocationServices.getFusedLocationProviderClient(this)
                 fusedLocation.lastLocation
             } else {
-                Toast.makeText(this, "Pleas turn on your location", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please turn on your location", Toast.LENGTH_SHORT).show()
                 val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
                 startActivity(intent)
             }
@@ -80,13 +79,6 @@ class MainActivity : AppCompatActivity() {
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return false
         }
         return true

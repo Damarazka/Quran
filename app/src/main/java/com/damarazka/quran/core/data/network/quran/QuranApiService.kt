@@ -1,6 +1,5 @@
-package com.damarazka.quran.core.network.quran
+package com.damarazka.quran.core.data.network.quran
 
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 
