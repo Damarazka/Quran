@@ -12,27 +12,48 @@ import java.util.Locale
 
 class LocationPreferences(val context: Context) {
     private val fusedLocation = LocationServices.getFusedLocationProviderClient(context)
+
     @SuppressLint("MissingPermission")
-    fun getKnownLastLocation() : LiveData<List<String>> {
+    fun getKnownLastLocation(): LiveData<List<String>> {
         val lastKnownLocation = MutableLiveData<List<String>>()
         fusedLocation.lastLocation.addOnSuccessListener {
             if (it != null) {
                 val geocoder = Geocoder(context, Locale.getDefault())
                 geocoder.getFromLocation(
-                    -7.8193722,
-                    112.0415361,
-                    //it.,
-                    //it.longitude,
+                    it.latitude,
+                    it.longitude,
                     1
                 ) { listAddress ->
                     val city = listAddress[0].subAdminArea
-                    val resultOfCity = city.split(" ")
+                    val arrayCity = city.split(" ")
                     val subLocality = listAddress[0].subLocality
                     val locality = listAddress[0].locality
                     val resultLocation = "$subLocality, $locality"
-                    Log.i("LocPref", "getKnownLastLocation: $resultOfCity")
 
-                    val listCity = listOf(resultOfCity[0], resultLocation)
+                    val currentLanguage = Locale.getDefault().language
+                    Log.i("LocPref", "getKnownLastLocation: $currentLanguage")
+
+                    val cityResult:String = when (currentLanguage) {
+                        "in" -> {
+                            var result = ""
+                            for (i in 1 until arrayCity.size){
+                                result += arrayCity[i] + ""
+                            }
+                            result
+                        }
+                        "en" -> {
+                            var result = ""
+                            for (i in 0 until arrayCity.size -1){
+                                result += arrayCity[i] + ""
+                            }
+                            result
+                        }else ->{
+                            Log.e("LocPref", "error: current language not undefined, " )
+                            "Jakarta"
+                        }
+                    }
+                    val listCity = listOf(cityResult, resultLocation)
+                    Log.e("LogPref", "data : $listCity ", )
                     lastKnownLocation.postValue(listCity)
                 }
             } else {
@@ -40,8 +61,8 @@ class LocationPreferences(val context: Context) {
             }
         }
 
-        fusedLocation.lastLocation.addOnFailureListener{
-            Log.e("SharedViewModel", "getKnownLastLocation: " + it.localizedMessage )
+        fusedLocation.lastLocation.addOnFailureListener {
+            Log.e("SharedViewModel", "getKnownLastLocation: " + it.localizedMessage)
         }
         return lastKnownLocation
     }
