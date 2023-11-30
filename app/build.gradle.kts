@@ -74,4 +74,7 @@ dependencies {
 
     // Fused location
     implementation("com.google.android.gms:play-services-location:21.0.1")
+
+    // Splash Screen
+    implementation("androidx.core:core-splashscreen:1.0.1")
 }
