@@ -1,13 +1,16 @@
 package com.damarazka.quran.util
 
+import android.webkit.JavascriptInterface
 import com.damarazka.quran.core.domain.model.Ayah
 import com.damarazka.quran.core.domain.model.City
 import com.damarazka.quran.core.domain.model.QuranEdition
 import com.damarazka.quran.core.domain.model.Surah
 import com.damarazka.quran.core.data.network.adzan.CityItem
+import com.damarazka.quran.core.data.network.adzan.JadwalItem
 import com.damarazka.quran.core.data.network.quran.AyahsItem
 import com.damarazka.quran.core.data.network.quran.QuranEditionItem
 import com.damarazka.quran.core.data.network.quran.SurahItem
+import com.damarazka.quran.core.domain.model.Jadwal
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
@@ -73,5 +76,22 @@ object DataMapper {
             cities.add(city)
         }
         return flowOf(cities)
+    }
+
+    @JvmName("appJadwalItemToDomain")
+    fun mapResponseToDomain(input: JadwalItem): Flow<Jadwal>{
+        val jadwal = Jadwal(
+         date = input.date,
+         imsak = input.imsak,
+         isya = input.isya,
+         dzuhur = input.dzuhur,
+         subuh = input.subuh,
+         dhuha = input.dhuha,
+         terbit = input.terbit,
+         tanggal = input.tanggal,
+         ashar = input.ashar,
+         maghrib = input.maghrib
+        )
+        return flowOf(jadwal)
     }
 }

@@ -1,6 +1,5 @@
 package com.damarazka.quran.presentation.adzan
 
-import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,9 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import com.damarazka.quran.R
 import com.damarazka.quran.core.data.Resource
 import com.damarazka.quran.databinding.FragmentAdzanBinding
 import com.damarazka.quran.presentation.ViewModelFactory
@@ -36,18 +33,22 @@ class AdzanFragment : Fragment() {
             when (it) {
                 is Resource.Loading -> {}
                 is Resource.Success -> {
-                    binding.tvLocation.text = it.data?.listAddress?.get(1)
-                    when (val listCity = it.data?.listCity) {
+                    binding.tvLocation.text = it.data?.listLocation?.get(1)
+                    binding.tvDate.text = it.data?.currentDate?.get(3)
+
+                    when (val adzanTime = it.data?.adzanTime) {
                         is Resource.Loading -> {}
                         is Resource.Success -> {
-                            val idCity = listCity.data?.get(0)?.idCity
-                            val city = listCity.data?.get(0)?.location
-                            Log.i("AdzanFragment", "idcity of $city: $idCity")
-                            Toast.makeText(
-                                context,
-                                "id city of $city : $idCity",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            binding.apply {
+                                adzanTime.data?.let { time ->
+                                    tvTimeSubuh.text = time.subuh
+                                    tvTimeImsak.text = time.imsak
+                                    tvTimeDzuhur.text = time.dzuhur
+                                    tvTimeAshar.text = time.ashar
+                                    tvTimeMaghrib.text = time.maghrib
+                                    tvTimeIsya.text = time.isya
+                                }
+                            }
                         }
                         is Resource.Error -> {}
                         else -> {

@@ -34,20 +34,9 @@ class LocationPreferences(val context: Context) {
                     Log.i("LocPref", "getKnownLastLocation: $currentLanguage")
 
                     val cityResult:String = when (currentLanguage) {
-                        "in" -> {
-                            var result = ""
-                            for (i in 1 until arrayCity.size){
-                                result += arrayCity[i] + ""
-                            }
-                            result
-                        }
-                        "en" -> {
-                            var result = ""
-                            for (i in 0 until arrayCity.size -1){
-                                result += arrayCity[i] + ""
-                            }
-                            result
-                        }else ->{
+                        "in" -> cityResult(false,arrayCity)
+                        "en" -> cityResult(true,arrayCity)
+                        else ->{
                             Log.e("LocPref", "error: current language not undefined, " )
                             "Jakarta"
                         }
@@ -65,5 +54,19 @@ class LocationPreferences(val context: Context) {
             Log.e("SharedViewModel", "getKnownLastLocation: " + it.localizedMessage)
         }
         return lastKnownLocation
+    }
+
+    private fun cityResult(isEnglish : Boolean, arrCity : List<String>): String{
+        var result = ""
+        if (isEnglish){
+            for (i in 0 until arrCity.size -1){
+                result += arrCity[i] + ""
+            }
+        }else{
+            for (i in 1 until arrCity.size){
+                result += arrCity[i] + ""
+            }
+        }
+        return result
     }
 }

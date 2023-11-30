@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_quran"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_quran_two"
         android:title="@string/quran" />
     <item
         android:id="@+id/nav_adzan"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_adzan"
         android:title="@string/adzan" />
 </menu>
